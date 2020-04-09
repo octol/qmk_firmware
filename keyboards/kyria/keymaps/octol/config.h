@@ -31,6 +31,6 @@
 // #define SPLIT_USB_DETECT
 // #define NO_USB_STARTUP_CHECK
 
-//#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD
 
 #define TAPPING_TERM 200
