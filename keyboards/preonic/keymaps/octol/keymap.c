@@ -31,16 +31,6 @@ enum preonic_keycodes {
   BACKLIT
 };
 
-// Ideas for improvements
-// - Shift on space
-// - ' on right shift
-// add keys on left/right alt.
-//      - left: backspace?
-//      - right: enter?
-// Other keys that can be moved more central
-//      - esc
-//      - tab
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Qwerty
      * ,-----------------------------------------------------------------------------------.
@@ -48,19 +38,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |Ctrl/Esc| A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
+     * |Ctrl/Esc| A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |-/Shift|  Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   / |'/Shift|
+     * |      |  Z   |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |  -   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Ctrl |      | Alt  | GUI  |Symbol|    Space    |Nv/Num| GUI  | Alt  |      | Ctrl |
+     * | Ctrl |      | Alt  | GUI  |Symbol| Shift/Space |Enter | Nav  |  GUI | Alt  | Ctrl |
      * `-----------------------------------------------------------------------------------'
      */
 	[_QWERTY] = LAYOUT_preonic_grid( \
       KC_ESC,          KC_1,  KC_2,    KC_3,            KC_4,  KC_5,           KC_6,           KC_7,    KC_8,           KC_9,    KC_0,    KC_NO, \
       KC_TAB,          KC_Q,  KC_W,    KC_E,            KC_R,  KC_T,           KC_Y,           KC_U,    KC_I,           KC_O,    KC_P,    KC_NO, \
       LCTL_T(KC_ESC),  KC_A,  KC_S,    KC_D,            KC_F,  KC_G,           KC_H,           KC_J,    KC_K,           KC_L,    KC_SCLN, KC_QUOT, \
-      KC_LSFT,         KC_Z,  KC_X,    KC_C,            KC_V,  KC_B,           KC_N,           KC_M,    KC_COMM,        KC_DOT,  KC_SLSH, KC_MINS, \
-      KC_LCTL,         KC_NO, KC_LALT, LGUI_T(KC_BSPC), MO(1), LSFT_T(KC_SPC), LSFT_T(KC_SPC), MO(2),   KC_ENT,         KC_RGUI, KC_RALT,   KC_RCTL
+      KC_NO,           KC_Z,  KC_X,    KC_C,            KC_V,  KC_B,           KC_N,           KC_M,    KC_COMM,        KC_DOT,  KC_SLSH, KC_MINS, \
+      KC_LCTL,         KC_NO, KC_LALT, LGUI_T(KC_BSPC), MO(1), LSFT_T(KC_SPC), LSFT_T(KC_SPC), KC_ENT,  MO(2),          KC_RGUI, KC_RALT, KC_RCTL
     ),
     /* Symbol
      * ,-----------------------------------------------------------------------------------.
@@ -68,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |      |  {   |  }   |  (   |  )   |  |   |  +   |   -  |   =  |   _  |   '  |      |
+     * |      |  {   |  }   |  (   |  )   |   |  |   +  |   -  |   =  |   _  |   '  |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      |      |  [   |  ]   |      |      |  \   | Home | PgUp |  Up  | PgDn |
+     * |      |      |      |  [   |  ]   |      |      |   \  | Home | PgUp |  Up  | PgDn |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |             |Adjust| End  | Left | Down |Right |
      * `-----------------------------------------------------------------------------------'
@@ -80,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
       _______, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE, KC_PLUS, KC_MINS, KC_EQL,  KC_UNDS, KC_QUOT, _______, \
       _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______, KC_BSLS, KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, \
-      _______, _______, _______, _______, _______, _______, _______, MO(3),   KC_END,  KC_LEFT, KC_DOWN, KC_RGHT \
+      _______, _______, _______, _______, _______, _______, _______, _______, MO(3),   KC_LEFT, KC_DOWN, KC_RGHT \
     ),
     /* Navigation / numbers
      * ,-----------------------------------------------------------------------------------.
