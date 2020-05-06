@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |      |  {   |  }   |  (   |  )   |   |  |   +  |   -  |   =  |   _  |   '  |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      |      |  [   |  ]   |   \  |   '  |   "  | Home | PgUp |  Up  | PgDn |
+     * |      |      |      |  [   |  ]   |   \  |      |   '  |   "  | PgUp |  Up  | PgDn |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |             |      |Adjust| Left | Down |Right |
      * `-----------------------------------------------------------------------------------'
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
       _______, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE, KC_PLUS, KC_MINS, KC_EQL,  KC_UNDS, KC_QUOT, _______, \
-      _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, KC_QUOT, KC_DQUO, KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, \
+      _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, KC_QUOT, KC_DQUO, KC_PGUP, KC_UP,   KC_PGDN, \
       _______, _______, _______, _______, _______, _______, _______, _______, MO(3),   KC_LEFT, KC_DOWN, KC_RGHT \
     ),
     /* Navigation / numbers
@@ -78,18 +78,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Ins  |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |      |      | PgUp |  Up  | PgDn |      | Left | Down |  Up  |Right |      |      |
+     * |      | Home | PgUp |  Up  | PgDn |      | Left | Down |  Up  |Right |      |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      | Left | Down |Right |      |      |      |      |      |      |      |
+     * |      | End  | Left | Down |Right |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |Adjust|             |      |      |      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
 	[_RAISE] = LAYOUT_preonic_grid( \
-      KC_GRV, KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-      KC_GRV, KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
-      _______, _______, KC_PGUP, KC_UP,   KC_PGDN, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-      _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, \
+      KC_GRV,  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+      KC_GRV,  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
+      _______, KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+      _______, KC_END,  KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, MO(3),   _______, _______, _______, _______, _______, _______, _______ \
     ),
     /* Adjust (Lower + Raise)
