@@ -40,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |Ctrl/Esc| A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  | Shift|
+     * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Ctrl |      | Alt  | GUI  |Symbol|    Space    |Nv/Num| GUI  | Alt  |      | Ctrl |
+     * | Ctrl |      | GUI  | Alt  |Symbol|    Space    | Nav  | Alt  | GUI  |      | Ctrl |
      * `-----------------------------------------------------------------------------------'
      */
 	[_QWERTY] = LAYOUT_preonic_grid( \
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,         KC_Q,  KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
       LCTL_T(KC_ESC), KC_A,  KC_S,    KC_D,    KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
       KC_LSFT,        KC_Z,  KC_X,    KC_C,    KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-      KC_LCTL,        KC_NO, KC_LALT, KC_LGUI, MO(1), KC_SPC, KC_SPC, MO(2), KC_RGUI, KC_RALT, KC_NO,   KC_RCTL
+      KC_LCTL,        KC_NO, KC_LGUI, KC_LALT, MO(1), KC_SPC, KC_SPC, MO(2), KC_RALT, KC_RGUI, KC_NO,   KC_RCTL
     ),
     /* Symbol
      * ,-----------------------------------------------------------------------------------.
@@ -58,19 +58,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+-------------+------+------+------+------+------|
      * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Del  |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |      |  {   |  }   |  (   |  )   |  |   |  +   |   -  |   =  |   _  |   '  |      |
+     * |      |  {   |  }   |  (   |  )   |   |  |   +  |   -  |   =  |   _  |   '  |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      |      |  [   |  ]   |      |      |  \   | Home | PgUp |  Up  | PgDn |
+     * |      |      |      |  [   |  ]   |   \  |      |   '  |   "  | PgUp |  Up  | PgDn |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |      |             |Adjust| End  | Left | Down |Right |
+     * |      |      |      |      |      |             |Adjust|      | Left | Down |Right |
      * `-----------------------------------------------------------------------------------'
      */
 	[_LOWER] = LAYOUT_preonic_grid( \
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
       _______, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE, KC_PLUS, KC_MINS, KC_EQL,  KC_UNDS, KC_QUOT, _______, \
-      _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______, KC_BSLS, KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, \
-      _______, _______, _______, _______, _______, _______, _______, MO(3),   KC_END,  KC_LEFT, KC_DOWN, KC_RGHT \
+      _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, KC_QUOT, KC_DQUO, KC_PGUP, KC_UP,   KC_PGDN, \
+      _______, _______, _______, _______, _______, _______, _______, MO(3),   _______, KC_LEFT, KC_DOWN, KC_RGHT \
     ),
     /* Navigation / numbers
      * ,-----------------------------------------------------------------------------------.
@@ -78,18 +78,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Ins  |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |      |      | PgUp |  Up  | PgDn |      | Left | Down |  Up  |Right |      |      |
+     * |      | Home | PgUp |  Up  | PgDn |      | Left | Down |  Up  |Right |      |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
-     * |      |      | Left | Down |Right |      |      |      |      |      |      |      |
+     * |      | End  | Left | Down |Right |      | Home | End  | PgUp | PgDn |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |Adjust|             |      |      |      |      |      |
      * `-----------------------------------------------------------------------------------'
      */
 	[_RAISE] = LAYOUT_preonic_grid( \
-      KC_GRV, KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-      KC_GRV, KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
-      _______, _______, KC_PGUP, KC_UP,   KC_PGDN, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-      _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, \
+      KC_GRV,  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+      KC_GRV,  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
+      _______, KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+      _______, KC_END,  KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_HOME, KC_END,  KC_PGUP, KC_PGDN, _______, _______, \
       _______, _______, _______, _______, MO(3),   _______, _______, _______, _______, _______, _______, _______ \
     ),
     /* Adjust (Lower + Raise)
