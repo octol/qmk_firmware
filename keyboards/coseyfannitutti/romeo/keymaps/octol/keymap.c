@@ -15,6 +15,8 @@
  */
 #include QMK_KEYBOARD_H
 
+#define CT_PGUP     LCTL(KC_PGUP)
+#define CT_PGDN     LCTL(KC_PGDN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_all(
@@ -34,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_all(
       _______, KC_PGUP, KC_UP,   KC_PGDN, KC_HOME, _______, _______, _______, _______, _______, KC_PSCR, KC_INS,
       _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______, _______, _______, _______, _______, _______,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_END,  CT_PGUP, CT_PGDN, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, _______ ),
 
   // System layer
