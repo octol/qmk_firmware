@@ -33,7 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
+#define TAPPING_TERM 150
 
 #undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
@@ -50,3 +50,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_SLEEP
 */
+
+#define COMBO_COUNT 1
+#define COMBO_TERM 70

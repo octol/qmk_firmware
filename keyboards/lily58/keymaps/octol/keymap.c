@@ -17,10 +17,6 @@ enum layer_number {
   _ADJUST,
 };
 
-
-// Ideas:
-//  - backspace on one of the index finger buttons.
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -110,6 +106,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______, _______, _______, _______ \
   )
 };
+
+const uint16_t PROGMEM bspc_combo[] = {KC_J, KC_K, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {COMBO(bspc_combo, KC_BSPC)};
 
 // Setting ADJUST layer RGB back to default
 //void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
