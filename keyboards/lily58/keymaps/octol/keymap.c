@@ -107,10 +107,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-const uint16_t PROGMEM bspc_combo[] = {KC_H, KC_J, COMBO_END};
+/*const uint16_t PROGMEM bspc_combo[] = {KC_H, KC_J, COMBO_END};*/
 const uint16_t PROGMEM lbspc_combo[] = {KC_D, KC_F, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(bspc_combo, KC_BSPC),
+    /*COMBO(bspc_combo, KC_BSPC),*/
     COMBO(lbspc_combo, KC_BSPC)
 };
 
