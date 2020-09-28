@@ -114,6 +114,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+
+const uint16_t PROGMEM jk_bspc_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM ui_bspc_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM cv_shift_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM mcomma_shift_combo[] = {KC_M, KC_COMM, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(jk_bspc_combo, KC_BSPC),
+    COMBO(ui_bspc_combo, KC_BSPC),
+    COMBO(cv_shift_combo, KC_LSFT),
+    COMBO(mcomma_shift_combo, KC_RSFT)
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
         case QWERTY:
