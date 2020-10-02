@@ -25,18 +25,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM_SYM] = LAYOUT(
-        KC_1,  KC_2,     KC_3,     KC_4,      KC_5,  KC_TRNS,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
+        KC_1,  KC_2,     KC_3,     KC_4,      KC_5,  _______,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
     KC_EXLM,  KC_AT,  KC_HASH,   KC_DLR,   KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR, KC_EQUAL,  KC_MINS,
     KC_BSLS,KC_LCBR,  KC_LBRC,  KC_LPRN,   KC_UNDS,            KC_RPRN,  KC_RBRC,  KC_RCBR,   KC_DOT,   KC_GRV,
-                                KC_CAPS,   KC_TRNS,            KC_TRNS,  KC_TRNS
+                                KC_CAPS,   _______,            _______,  _______
   ),
 
   [_NAV] = LAYOUT(
-      RESET,  _______,  AG_NORM,  AG_SWAP,  DEBUG, KC_TRNS,   KC_GRV,  KC_PGDN,    KC_UP,  KC_PGUP,  KC_SCLN,
+      RESET,  _______,  AG_NORM,  AG_SWAP,  DEBUG, _______,   KC_GRV,  KC_PGDN,    KC_UP,  KC_PGUP,  KC_SCLN,
     RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_NO,           KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,
     RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  KC_NO,           KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_BSLS,
-                                  KC_TRNS,KC_TRNS,           KC_TRNS,  KC_TRNS
+                                  _______,_______,           _______,  _______
   ),
+};
+
+/*const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};*/
+/*const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};*/
+/*const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};*/
+const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
+
+/*const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};*/
+/*const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};*/
+/*const uint16_t PROGMEM mcomma_combo[] = {KC_M, KC_COMM, COMBO_END};*/
+/*const uint16_t PROGMEM commadot_combo[] = {KC_COMM, KC_DOT, COMBO_END};*/
+
+combo_t key_combos[COMBO_COUNT] = {
+    /*COMBO(sd_combo, KC_ESC),*/
+    /*COMBO(df_combo, KC_TAB),*/
+    /*COMBO(jk_combo, KC_BSPC),*/
+    COMBO(ui_combo, KC_BSPC),
+    /*COMBO(xc_combo, KC_LCTRL),*/
+    /*COMBO(cv_combo, KC_LSFT),*/
+    /*COMBO(mcomma_combo, KC_RSFT),*/
+    /*COMBO(commadot_combo, KC_RCTRL)*/
 };
 
 void encoder_update_user(uint8_t index, bool clockwise) {

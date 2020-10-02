@@ -1,0 +1,13 @@
+#pragma once
+
+#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_FORCE_HOLD
+
+#define COMBO_COUNT 1
+#define COMBO_TERM 40
+
+//#define FORCE_NKRO
+//#define EXTRA_EXTRA_LONG_COMBOS
+//#define ALLOW_ACTION_KEYS
