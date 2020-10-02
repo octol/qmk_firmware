@@ -45,6 +45,8 @@
 #define COMBO_TERM 40
 
 #define FORCE_NKRO
+#define EXTRA_EXTRA_LONG_COMBOS
+#define ALLOW_ACTION_KEYS
 
 // --- Lifted from pierre83's config ---
 
