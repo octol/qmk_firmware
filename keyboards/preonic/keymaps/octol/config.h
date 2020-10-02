@@ -42,7 +42,7 @@
 #define TAPPING_FORCE_HOLD
 
 #define COMBO_COUNT 7
-#define COMBO_TERM 50
+#define COMBO_TERM 40
 
 #define FORCE_NKRO
 
