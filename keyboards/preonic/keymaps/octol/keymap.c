@@ -46,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
 	[_QWERTY] = LAYOUT_preonic_grid( \
-      KC_ESC,         KC_1,    KC_2,    KC_3,    KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, \
-      KC_TAB,         KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
-      LCTL_T(KC_ESC), KC_A,    KC_S,    KC_D,    KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
-      KC_LSFT,        KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-      KC_LCTL,        _______, KC_LGUI, KC_LALT, MO(1), KC_SPC, KC_SPC, MO(2), KC_RALT, KC_RGUI, _______, KC_RCTL
+      KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, \
+      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC, \
+      KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT, \
+      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
+      KC_LCTL, _______, KC_LGUI, KC_LALT, MO(1), KC_SPC, KC_SPC, MO(2), KC_RALT, KC_RGUI, _______, KC_RCTL
       ),
     /* Lower
      * ,-----------------------------------------------------------------------------------.
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Ins  |
      * |------+------+------+------+------+-------------+------+------+------+------+------|
-     * |      |      |MBtn1 | MUp  |MBtn2 |      | Left | Down |  Up  |Right |      |      |
+     * |      |      |MBtn1 | MUp  |MBtn2 |      | Left | Down |  Up  |Right |   -  |      |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
      * |      |      |MLeft |MDown |MRight|      | Home | PgUp | PgDn | End  |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_RAISE] = LAYOUT_preonic_grid( \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
-      _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+      _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MINS, _______, \
       _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
       _______, _______, _______, _______, MO(3),   KC_ENT,  KC_ENT,  _______, _______, _______, _______, _______ \
     ),
@@ -114,17 +114,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+/*
+ * ER is too common in English
+ *
+ * Example from reddit:
+ *
+ *  const uint16_t PROGMEM grv_combo[] = {KC_C, KC_V, COMBO_END};
+ *  const uint16_t PROGMEM esc_combo[] = {KC_S, KC_D, COMBO_END};
+ *  const uint16_t PROGMEM tab_combo[] = {KC_D, KC_F, COMBO_END};
+ *  const uint16_t PROGMEM bspc_combo[] = {KC_J, KC_K, COMBO_END};
+ *  const uint16_t PROGMEM scln_combo[] = {KC_L, KC_QUOT, COMBO_END};
+ *  const uint16_t PROGMEM ent_combo[] = {KC_K, KC_L, COMBO_END};
+ */
 
-const uint16_t PROGMEM jk_bspc_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM ui_bspc_combo[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM cv_shift_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM mcomma_shift_combo[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+/*const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};*/
+
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM mcomma_combo[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM commadot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(jk_bspc_combo, KC_BSPC),
-    COMBO(ui_bspc_combo, KC_BSPC),
-    COMBO(cv_shift_combo, KC_LSFT),
-    COMBO(mcomma_shift_combo, KC_RSFT)
+    COMBO(sd_combo, KC_ESC),
+    COMBO(df_combo, KC_TAB),
+    COMBO(jk_combo, KC_BSPC),
+    /*COMBO(ui_combo, KC_BSPC),*/
+    COMBO(xc_combo, KC_LCTRL),
+    COMBO(cv_combo, KC_LSFT),
+    COMBO(mcomma_combo, KC_RSFT),
+    COMBO(commadot_combo, KC_RCTRL)
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

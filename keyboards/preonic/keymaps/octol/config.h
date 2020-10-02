@@ -41,7 +41,7 @@
 //#define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
 
-#define COMBO_COUNT 4
+#define COMBO_COUNT 7
 #define COMBO_TERM 50
 
 // --- Lifted from pierre83's config ---
