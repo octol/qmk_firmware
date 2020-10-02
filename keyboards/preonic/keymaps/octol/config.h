@@ -44,6 +44,8 @@
 #define COMBO_COUNT 7
 #define COMBO_TERM 50
 
+#define FORCE_NKRO
+
 // --- Lifted from pierre83's config ---
 
 // Set the mouse settings to a comfortable speed/accuracy trade-off
