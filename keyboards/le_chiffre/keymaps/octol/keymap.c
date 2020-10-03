@@ -30,37 +30,24 @@ enum combo_events {
     COMBO_UNDS,
     COMBO_BKSL,
     COMBO_LESS,
+    COMBO_COLN,
     COMBO_MORE,
     COMBO_QUOT,
     COMBO_DASH,
+    COMBO_ENT,
 };
 
 /* Missing
  *
  * - GUI
- * - Tab
- * - Del
- */
-
-/* Combomap
- *
- * ,-----------------------------.       ,--------------------------------.
- * |      |    ESC    |     |     |      |     |           |    BSLH      |
- * |-----+-----+-----+-----+------|      |--------------------------------|
- * |      |   BSPC          |     |      |    LES  |  GRT   |             |
- * |-----+-----+-----+--RMB+-LMB--+      |--------------------------------|
- * |      |   MINS    |     |     |      |    QUO  | UNDR   |     |       |
- * `------+-----+-----+------+----'      `--------------------------------'
- *              .---------------.           .-----------------.
- *              |     |         |           |           |     |
- *              '---------------'           '-----------------'
+ * - AltGr
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap 0: Basic layer
  *
- * ,-----------------------------.       ,--------------------------------.
+ * ,------------------------------.      ,--------------------------------.
  * |    Q |  W  |  E  |  R  |  T  |      |  Y  |  U  |  I  |  O  |    P   |
  * |-----+-----+-----+-----+------|      |--------------------------------|
  * |CTRL/A|  S  |  D  |  F  |  G  |      |  H  |  J  |  K  |  L  | CTRL/; |
@@ -80,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Keymap 1: Symbols layer
- * ,-----------------------------.       ,--------------------------------.
+ * ,------------------------------.      ,--------------------------------.
  * |  !   |  @  |  {  |  }  |  |  |      |  `  |  ~  |     |     |    \   |
  * |-----+-----+-----+-----+------|      |--------------------------------|
  * |  #   |  $  |  (  |  )  | LMB |      |  +  |  -  |  /  |  *  |    '   |
@@ -99,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Keymap 2: Pad/Function layer
- * ,-----------------------------.       ,-------------------------------.
+ * ,------------------------------.      ,-------------------------------.
  * |  1   |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |   0   |
  * |-----+-----+-----+-----+------|      |-------------------------------|
  * |  F1  | F2  | F3  | F4  |  F5 |      | LFT | DWN | UP  | RGT | VOLUP |
@@ -119,28 +106,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+/* Combomap
+ *
+ * ,------------------------------.      ,------------------------------.
+ * |      |    ESC    |     |     |      |     |      |     |   BSLH    |
+ * |------+-----+-----+-----+-----|      |-----+------+-----------------|
+ * |     DEL   BSPC  TAB    |     |      |    LES   COLN   GRT   |      |
+ * |------+-----+-----+-----+-----+      |-----+------+-----------------|
+ * |      |    MINS  ENT    |     |      |    QUOT   UNDR   |    |      |
+ * `------+-----+-----+-----+-----'      `------------------------------'
+ *              .---------------.           .-----------------.
+ *              |     |         |           |           |     |
+ *              '---------------'           '-----------------'
+ */
+
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM combo_unds[] = {KC_M, KC_COMM,  COMBO_END};
+const uint16_t PROGMEM combo_dash[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_ent[] = {KC_C, KC_V, COMBO_END};
+
+const uint16_t PROGMEM combo_unds[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_bksl[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_less[] = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_coln[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM combo_more[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_quot[] = {KC_N, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_dash[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [COMBO_BSPC] = COMBO(combo_bspc,KC_BSPC),
-  [COMBO_TAB] = COMBO(combo_tab,KC_TAB),
-  [COMBO_ESC] = COMBO(combo_esc,KC_ESC),
-  [COMBO_DEL] = COMBO(combo_del,KC_DEL),
+  [COMBO_BSPC] = COMBO(combo_bspc, KC_BSPC),
+  [COMBO_TAB] = COMBO(combo_tab, KC_TAB),
+  [COMBO_ESC] = COMBO(combo_esc, KC_ESC),
+  [COMBO_DEL] = COMBO(combo_del, KC_DEL),
   [COMBO_UNDS] = COMBO(combo_unds, KC_UNDS),
-  [COMBO_BKSL] = COMBO(combo_bksl,KC_BSLS),
-  [COMBO_LESS] = COMBO(combo_less,KC_LT),
-  [COMBO_MORE] = COMBO(combo_more,KC_GT),
+  [COMBO_BKSL] = COMBO(combo_bksl, KC_BSLS),
+  [COMBO_LESS] = COMBO(combo_less, KC_LT),
+  [COMBO_COLN] = COMBO(combo_coln, KC_COLN),
+  [COMBO_MORE] = COMBO(combo_more, KC_GT),
   [COMBO_QUOT] = COMBO(combo_quot, KC_QUOT),
   [COMBO_DASH] = COMBO(combo_dash, KC_MINS),
+  [COMBO_ENT] = COMBO(combo_ent, KC_ENT),
 };
 #endif
