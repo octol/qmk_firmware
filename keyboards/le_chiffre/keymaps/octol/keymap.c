@@ -40,7 +40,6 @@ enum combo_events {
 /* Missing
  *
  * - GUI
- * - AltGr
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -54,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+------+      |--------------------------------|
  * |SHFT/Z|  X  |  C  |  V  |  B  |      |  N  |  M  |  <  |  >  | SHFT/? |
  * `------+-----+-----+------+----'      `--------------------------------'
- *            .----------------.           .-------------.
- *            |ENT/ALT|SPC(SYM)|           |SPC(NUM)|SHFT|
- *            '----------------'           '-------------'
+ *            .----------------.           .--------------.
+ *            |ENT/ALT|SPC(SYM)|           |SPC(NUM)|AltGr|
+ *            '----------------'           '--------------'
  */
 
 [_BASE] = LAYOUT(
   KC_Q,                  KC_W,    KC_E,    KC_R,    KC_T, KC_MPLY, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
   MT(MOD_LCTL, KC_A),    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,    MT(MOD_LCTL, KC_SCLN),
   MT(MOD_RSFT, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, KC_DOT,  MT(MOD_RSFT, KC_SLSH),
-                 MT(MOD_LALT, KC_ENT), LT(_SYMB, KC_SPC),           LT(_NUMB, KC_SPC), KC_LSFT
+                 MT(MOD_LALT, KC_ENT), LT(_SYMB, KC_SPC),           LT(_NUMB, KC_SPC), KC_RALT
 ),
 
 /* Keymap 1: Symbols layer
