@@ -22,11 +22,6 @@ enum layers {
     _NUMB,
 };
 
-/* Missing
- *
- * - GUI
- */
-
 /* Combomap
  *
  * ,------------------------------.      ,------------------------------.
@@ -36,9 +31,9 @@ enum layers {
  * |------+-----+-----+-----+-----+      |----ENT-----+-----------------|
  * |      |    MINS  ENT    |     |      |    QUOT   UNDS   |    |      |
  * `------+-----+-----+-----+-----'      `------------------------------'
- *              .---------------.           .-----------------.
- *              |     |         |           |           |     |
- *              '---------------'           '-----------------'
+ *               .----------------.      .----------------.
+ *               |     |          |      |          |     |
+ *               '----------------'      '----------------'
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -46,22 +41,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,------------------------------.      ,--------------------------------.
- * |    Q |  W  |  E  |  R  |  T  |      |  Y  |  U  |  I  |  O   |   P   |
- * |-----+-----+-----+-----+------|      |--------------------------------|
- * |CTRL/A|  S  |  D  |  F  |  G  |      |  H  |  J  |  K  |  L   |CTRL/; |
- * |-----+-----+-----+-----+------+      |--------------------------------|
- * |SHFT/Z|  X  |  C  |  V  |  B  |      |  N  |  M  |  <  |RALT/>|SHFT/? |
- * `------+-----+-----+------+----'      `--------------------------------'
- *            .----------------.           .---------------.
- *            |ENT/SUP|SPC(SYM)|           |SPC(NUM)| LALT |
- *            '----------------'           '---------------'
+ * |    Q |  W   |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O   |   P   |
+ * |-----+-------+-----+-----+-----|     |--------------------------------|
+ * |CTRL/A|  S   |  D  |  F  |  G  |     |  H  |  J  |  K  |  L   |CTRL/; |
+ * |-----+-------+-----+-----+-----+     |--------------------------------|
+ * |SHFT/Z|RALT/X|  C  |  V  |  B  |     |  N  |  M  |  <  |RALT/>|SHFT/? |
+ * `------+------+-----+-----+----'      `--------------------------------'
+ *                .----------------.     .----------------.
+ *                | LGUI | SPC/SYM |     | ENT/NUM | LALT |
+ *                '----------------'     '----------------'
  */
 
 [_BASE] = LAYOUT(
-  KC_Q,                  KC_W,    KC_E,    KC_R,    KC_T, KC_MPLY,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-  MT(MOD_LCTL, KC_A),    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,    MT(MOD_LCTL, KC_SCLN),
-  MT(MOD_RSFT, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, MT(MOD_RALT, KC_DOT),  MT(MOD_RSFT, KC_SLSH),
-                 MT(MOD_LGUI, KC_ENT), LT(_SYMB, KC_SPC),           LT(_NUMB, KC_ENT), KC_LALT
+  KC_Q,          KC_W,    KC_E,    KC_R,    KC_T, KC_MPLY,  KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,
+  LCTL_T(KC_A),  KC_S,    KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,           LCTL_T(KC_SCLN),
+  LSFT_T(KC_Z),  KC_X,    KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, RALT_T(KC_DOT), RSFT_T(KC_SLSH),
+                 KC_LGUI, LT(_SYMB, KC_SPC),           LT(_NUMB, KC_ENT), KC_LALT
 ),
 
 /* Keymap 1: Symbols layer
@@ -72,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+------+      |--------------------------------|
  * |  %   |  ^  |  [  |  ]  | RMB |      |  &  |  =  |  ,  |  .  |   -    |
  * `------+-----+-----+------+----'      `--------------------------------'
- *                .------------.           .-----------.
- *                |  ;   |  =  |           |  =  |  ;  |
- *                '------------'           '-----------'
+ *                .---------------.      .---------------.
+ *                |  ;   |        |      |    =    |  ;  |
+ *                '---------------'      '---------------'
  */
 [_SYMB] = LAYOUT(
   KC_EXLM, KC_AT,    KC_LCBR, KC_RCBR, KC_PIPE, _______, KC_GRV,  KC_TILD, _______, _______, KC_BSLS,
