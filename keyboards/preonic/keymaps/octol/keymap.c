@@ -31,6 +31,20 @@ enum preonic_keycodes {
   BACKLIT
 };
 
+/* Combo map
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |     ESC     |      |      |      |     ESC     |    BSLSH    |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |     BKSp   TAB     |      |     LESS   COLN  GREAT    |      |      |
+ * |------+------+------+------+------+------|-ENT--+------+------+------+------+------|
+ * |      |      |     DASH   ENTER   |      |     QUOT   UNDS    |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Qwerty
      * ,-----------------------------------------------------------------------------------.
@@ -127,26 +141,60 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  const uint16_t PROGMEM ent_combo[] = {KC_K, KC_L, COMBO_END};
  */
 
-const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-/*const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};*/
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM combo_esc[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {KC_D, KC_F, COMBO_END};
+//const uint16_t PROGMEM combo_del[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM combo_dash[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_ent[] = {KC_C, KC_V, COMBO_END};
 
-const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM mcomma_combo[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM commadot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_bksl[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_ent2[] = {KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_less[] = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_coln[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_more[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_unds[] = {KC_M, KC_COMM, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(sd_combo, KC_ESC),
-    COMBO(df_combo, KC_TAB),
-    COMBO(jk_combo, KC_BSPC),
-    /*COMBO(ui_combo, KC_BSPC),*/
-    COMBO(xc_combo, KC_LCTRL),
-    COMBO(cv_combo, KC_LSFT),
-    COMBO(mcomma_combo, KC_RSFT),
-    COMBO(commadot_combo, KC_RCTRL)
+  COMBO(combo_esc, KC_ESC),
+  COMBO(combo_bspc, KC_BSPC),
+  COMBO(combo_tab, KC_TAB),
+  //COMBO(combo_del, KC_DEL),
+  COMBO(combo_dash, KC_MINS),
+  COMBO(combo_ent, KC_ENT),
+
+  COMBO(combo_bksl, KC_BSLS),
+  COMBO(combo_ent2, KC_ENT),
+  COMBO(combo_less, KC_LT),
+  COMBO(combo_coln, KC_COLN),
+  COMBO(combo_more, KC_GT),
+  COMBO(combo_quot, KC_QUOT),
+  COMBO(combo_unds, KC_UNDS)
 };
+#endif
+
+// const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+// const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+// const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+// /*const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};*/
+//
+// const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+// const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+// const uint16_t PROGMEM mcomma_combo[] = {KC_M, KC_COMM, COMBO_END};
+// const uint16_t PROGMEM commadot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+//
+// combo_t key_combos[COMBO_COUNT] = {
+//     COMBO(sd_combo, KC_ESC),
+//     COMBO(df_combo, KC_TAB),
+//     COMBO(jk_combo, KC_BSPC),
+//     /*COMBO(ui_combo, KC_BSPC),*/
+//     COMBO(xc_combo, KC_LCTRL),
+//     COMBO(cv_combo, KC_LSFT),
+//     COMBO(mcomma_combo, KC_RSFT),
+//     COMBO(commadot_combo, KC_RCTRL)
+// };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
