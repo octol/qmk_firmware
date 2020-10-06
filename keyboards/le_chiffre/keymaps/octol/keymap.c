@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-------+-----+-----+-----|     |--------------------------------|
  * |CTRL/A|  S   |  D  |  F  |  G  |     |  H  |  J  |  K  |  L   |CTRL/; |
  * |-----+-------+-----+-----+-----+     |--------------------------------|
- * |SHFT/Z|RALT/X|  C  |  V  |  B  |     |  N  |  M  |  <  |RALT/>|SHFT/? |
+ * |SHFT/Z|  X   |  C  |  V  |  B  |     |  N  |  M  |  <  |RALT/>|SHFT/? |
  * `------+------+-----+-----+----'      `--------------------------------'
  *                .----------------.     .----------------.
  *                | LGUI | SPC/SYM |     | ENT/NUM | LALT |
@@ -53,10 +53,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_BASE] = LAYOUT(
-  KC_Q,          KC_W,    KC_E,    KC_R,    KC_T, KC_MPLY,  KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,
-  LCTL_T(KC_A),  KC_S,    KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,           LCTL_T(KC_SCLN),
-  LSFT_T(KC_Z),  KC_X,    KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, RALT_T(KC_DOT), RSFT_T(KC_SLSH),
-                 KC_LGUI, LT(_SYMB, KC_SPC),           LT(_NUMB, KC_ENT), KC_LALT
+  KC_Q,          KC_W,  KC_E,    KC_R,    KC_T, KC_MPLY,  KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,
+  LCTL_T(KC_A),  KC_S,  KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,           LCTL_T(KC_SCLN),
+  LSFT_T(KC_Z),  KC_X,  KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, RALT_T(KC_DOT), RSFT_T(KC_SLSH),
+                    KC_LGUI, LT(_SYMB, KC_SPC),           LT(_NUMB, KC_ENT), KC_LALT
 ),
 
 /* Keymap 1: Symbols layer
@@ -134,3 +134,13 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_unds, KC_UNDS),
 };
 #endif
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(KC_A):
+            //return TAPPING_TERM + 100;
+            return 300;
+        default:
+            return TAPPING_TERM;
+    }
+}

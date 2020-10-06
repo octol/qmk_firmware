@@ -26,7 +26,29 @@
 #    undef TAPPING_TERM
 #endif
 #define TAPPING_TERM 200
+#define TAPPING_TERM_PER_KEY
+
+// If you press a dual-function modifier key (such as "Ctrl when held, Z when tapped"),
+// press another key (such as "X"), release the modifier key, and then release the normal
+// key, it would normally output the modded key ("Ctrl+X" in this case)... [Ignore mod
+// tap] makes sure that both keys are sent (eg "zx") unless both keys are held for the
+// Tapping Term.
 #define IGNORE_MOD_TAP_INTERRUPT
 
-#define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+// Normally if you press a Mod Tap key, tap another key (press and release) and then release the
+// Mod Tap key, all within the tapping term, it will output the tapping function for both
+// keys. This changes it to output the mod.
+// NOTE: this setting seems broken as it seems like it's always enabled.
+//#define PERMISSIVE_HOLD
+
+// When the user holds a key after tapping it, the tapping function is repeated by
+// default, rather than activating the hold function. This allows keeping the ability to
+// auto-repeat the tapping function of a dual-role key. TAPPING_FORCE_HOLD removes that
+// ability to let the user activate the hold function instead, in the case of holding the
+// dual-role key after having tapped it.
+//#define TAPPING_FORCE_HOLD
+
+// Holding and releasing a dual function key without pressing another key will result in
+// nothing happening. With retro tapping enabled, releasing the key without pressing
+// another will send the original keycode even if it is outside the tapping term.
+//#define RETRO_TAPPING
