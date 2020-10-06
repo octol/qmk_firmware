@@ -45,7 +45,7 @@
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 #ifdef COMBO_ENABLE
-#define COMBO_COUNT 12
+#define COMBO_COUNT 13
 #define COMBO_TERM 40
 #endif
 
