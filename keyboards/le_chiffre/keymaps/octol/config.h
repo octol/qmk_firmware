@@ -19,7 +19,7 @@
 
 #ifdef COMBO_ENABLE
 #    define COMBO_COUNT 14
-#    define COMBO_TERM 40
+#    define COMBO_TERM 30
 #endif
 
 #ifdef TAPPING_TERM
