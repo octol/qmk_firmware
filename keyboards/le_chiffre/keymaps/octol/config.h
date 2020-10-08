@@ -40,8 +40,7 @@
 // Normally if you press a Mod Tap key, tap another key (press and release) and then release the
 // Mod Tap key, all within the tapping term, it will output the tapping function for both
 // keys. This changes it to output the mod.
-// NOTE: this setting seems broken as it seems like it's always enabled.
-//#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD
 
 // When the user holds a key after tapping it, the tapping function is repeated by
 // default, rather than activating the hold function. This allows keeping the ability to

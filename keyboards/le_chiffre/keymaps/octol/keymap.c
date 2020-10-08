@@ -139,7 +139,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LCTL_T(KC_A):
             //return TAPPING_TERM + 100;
-            return 350;
+            return 250;
+            /*return TAPPING_TERM;*/
         default:
             return TAPPING_TERM;
     }
