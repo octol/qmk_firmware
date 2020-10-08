@@ -28,6 +28,8 @@
 #define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
 
+// NOTES: no PERMISSIVE_HOLD and TAPPING_TERM 150, or PERMISSIVE_HOLD and TAPPING_TERM 200
+
 // If you press a dual-function modifier key (such as "Ctrl when held, Z when tapped"),
 // press another key (such as "X"), release the modifier key, and then release the normal
 // key, it would normally output the modded key ("Ctrl+X" in this case)... [Ignore mod
