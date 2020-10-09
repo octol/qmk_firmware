@@ -41,17 +41,17 @@
 #endif
 #define TAPPING_TERM 200
 #define TAPPING_FORCE_HOLD
-//#define PERMISSIVE_HOLD
-//#define IGNORE_MOD_TAP_INTERRUPT
+#define IGNORE_MOD_TAP_INTERRUPT
+#define PERMISSIVE_HOLD
 
 #ifdef COMBO_ENABLE
 #define COMBO_COUNT 13
-#define COMBO_TERM 40
+#define COMBO_TERM 30
 #endif
 
-#define FORCE_NKRO
-#define EXTRA_EXTRA_LONG_COMBOS
-#define ALLOW_ACTION_KEYS
+//#define FORCE_NKRO
+//#define EXTRA_EXTRA_LONG_COMBOS
+//#define ALLOW_ACTION_KEYS
 
 // --- Lifted from pierre83's config ---
 
