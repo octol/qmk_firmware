@@ -138,9 +138,8 @@ combo_t key_combos[COMBO_COUNT] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LCTL_T(KC_A):
-            //return TAPPING_TERM + 100;
-            return 250;
-            /*return TAPPING_TERM;*/
+            //return 350; // used with no TAPPING_TERM
+            return 250; // used with TAPPING_TERM
         default:
             return TAPPING_TERM;
     }

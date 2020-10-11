@@ -29,6 +29,9 @@
 #define TAPPING_TERM_PER_KEY
 
 // NOTES: no PERMISSIVE_HOLD and TAPPING_TERM 150, or PERMISSIVE_HOLD and TAPPING_TERM 200
+// NOTES: been trying two different alternatives
+// 1. PERMISSIVE_HOLD and only 250 on A
+// 2. no PERMISSIVE_HOLD but have 350 on A
 
 // If you press a dual-function modifier key (such as "Ctrl when held, Z when tapped"),
 // press another key (such as "X"), release the modifier key, and then release the normal
