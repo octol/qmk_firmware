@@ -29,18 +29,20 @@ enum layers {
 #define HM_S LALT_T(KC_S)
 #define HM_D LCTL_T(KC_D)
 #define HM_F LSFT_T(KC_F)
+#define HM_X RALT_T(KC_X)
 
 #define HM_SCLN RGUI_T(KC_SCLN)
 #define HM_L LALT_T(KC_L)
 #define HM_K RCTL_T(KC_K)
 #define HM_J RSFT_T(KC_J)
+#define HM_DOT RALT_T(KC_DOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] =  LAYOUT(
 KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
 HM_A,    HM_S,    HM_D,    HM_F,    KC_G,        KC_H,    HM_J,    HM_K,    HM_L,    HM_SCLN,
-KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+KC_Z,    HM_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, HM_DOT,  KC_SLSH,
                            LOWER,   KC_SPC,     KC_ENT,  RAISE
 ),
 
