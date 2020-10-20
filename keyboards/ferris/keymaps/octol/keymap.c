@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
 HM_A,    HM_S,    HM_D,    HM_F,    KC_G,        KC_H,    HM_J,    HM_K,    HM_L,    HM_SCLN,
 KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                           LOWER,   KC_BSPC,     KC_SPC,  RAISE
+                           LOWER,   KC_SPC,     KC_ENT,  RAISE
 ),
 
 
@@ -54,10 +54,10 @@ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXX
 
 
 [_LOWER] = LAYOUT(
-KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX,     KC_PPLS, KC_P7,   KC_P8,   KC_P9,  KC_PAST,
-KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX,     KC_PDOT, KC_P4,   KC_P5,   KC_P6,  KC_P0,
-KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,     KC_PMNS, KC_P1,   KC_P2,   KC_P3,  KC_PSLS,
-                           _______, _______,     KC_PENT, _______
+KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX,     KC_PPLS, KC_7,   KC_8,   KC_9,  KC_PAST,
+KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX,     KC_PDOT, KC_4,   KC_5,   KC_6,  KC_0,
+KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,     KC_PMNS, KC_1,   KC_2,   KC_3,  KC_PSLS,
+                           _______, _______,     KC_BSPC, _______
 ),
 
 [_ADJUST] = LAYOUT(
@@ -102,6 +102,7 @@ COMBO_QUOT,
 COMBO_NUHS,
 COMBO_ESC,
 COMBO_GRV,
+COMBO_BSPC
 };
 
 const uint16_t PROGMEM combo_1[] = {KC_Q, HM_A, COMBO_END};
@@ -132,6 +133,7 @@ const uint16_t PROGMEM combo_quot[] = {HM_SCLN, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM combo_nuhs[] = {HM_L, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {HM_S, HM_F, COMBO_END};
 const uint16_t PROGMEM combo_grv[] = {HM_S, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {KC_W, KC_E, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [COMBO_1] = COMBO(combo_1, KC_1),
@@ -162,5 +164,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [COMBO_NUHS] = COMBO(combo_nuhs, KC_NUHS),
     [COMBO_ESC] = COMBO(combo_esc, KC_ESC),
     [COMBO_GRV] = COMBO(combo_grv, KC_GRV),
+    [COMBO_BSPC] = COMBO(combo_bspc, KC_BSPC),
 };
 #endif
