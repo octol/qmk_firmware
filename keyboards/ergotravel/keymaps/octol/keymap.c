@@ -50,19 +50,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_ADJUST] = LAYOUT(
-     _______, _______, _______, _______, _______, _______, _______,         _______,  _______, _______, _______, _______, _______, _______,
      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,         _______,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
      _______, _______, _______, _______, _______, _______, _______,         _______,  _______, _______, _______, KC_F11,  KC_F12,  _______,
+     _______, _______, _______, _______, _______, _______, _______,         _______,  _______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______,          _______, _______,         _______,  _______,          _______, _______, _______, _______
   )
 
 };
 
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_del[]  = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_tab[]  = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_mins[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_ent[]  = {KC_C, KC_V, COMBO_END};
 
+const uint16_t PROGMEM combo_esc2[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_bsls[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_lt[]   = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_coln[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_gt[]   = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_ent2[] = {KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_unds[] = {KC_M, KC_COMM, COMBO_END};
 
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(combo_esc, KC_ESC),
+  COMBO(combo_del, KC_DEL),
+  COMBO(combo_bspc, KC_BSPC),
+  COMBO(combo_tab, KC_TAB),
+  COMBO(combo_mins, KC_MINS),
+  COMBO(combo_ent, KC_ENT),
 
-
-
+  COMBO(combo_esc2, KC_ESC),
+  COMBO(combo_bsls, KC_BSLS),
+  COMBO(combo_lt, KC_LT),
+  COMBO(combo_coln, KC_COLN),
+  COMBO(combo_gt, KC_GT),
+  COMBO(combo_ent2, KC_ENT),
+  COMBO(combo_quot, KC_QUOT),
+  COMBO(combo_unds, KC_UNDS),
+};
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
