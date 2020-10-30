@@ -17,6 +17,8 @@ enum custom_keycodes {
 #define TSKMGR LCTL(LSFT(KC_ESC))
 
 #define CTL_ESC LCTL_T(KC_ESC)
+#define PREV_TAB LCTL(KC_PGUP)
+#define NEXT_TAB LCTL(KC_PGDN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -34,17 +36,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
   KC_TILD, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______,          _______,     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,  \
-  _______, KC_LCBR,  KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE, _______,          _______,     KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  KC_COLN, KC_DQUO, \
-  _______, _______,  _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,          _______,     KC_COLN, KC_QUOT, KC_DQUO, _______, _______, _______, \
+  _______, KC_LCBR,  KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE, _______,          _______,     KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  _______, PREV_TAB, \
+  _______, _______,  _______, KC_LBRC, KC_RBRC, KC_BSLS, _______,          _______,     KC_COLN, KC_QUOT, KC_DQUO, _______, _______, NEXT_TAB, \
   _______, _______,  _______, _______,          _______, _______,          _______, _______,              _______, _______, _______, _______  \
 
   ),
 
   [_RAISE] = LAYOUT(
 
-  KC_GRV,  KC_1,    KC_2,   KC_3,   KC_4,    KC_5,     _______,          _______,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS,  \
-  _______, _______, KC_BTN1,KC_MS_U,KC_BTN2, _______,  _______,          _______,   KC_LEFT,   KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-  _______, _______, KC_MS_L,KC_MS_D,KC_MS_R, _______,  _______,          _______,   KC_HOME,   KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
+  KC_GRV,  KC_1,    KC_2,   KC_3,   KC_4,    KC_5,     _______,          _______,   KC_6,      KC_7,    KC_8,    KC_9,    KC_0,    KC_INS,  \
+  _______, _______, KC_BTN1,KC_MS_U,KC_BTN2, PREV_TAB, _______,          _______,   KC_LEFT,   KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+  _______, _______, KC_MS_L,KC_MS_D,KC_MS_R, NEXT_TAB, _______,          _______,   KC_HOME,   KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
   _______, _______, _______,_______,         _______,  _______,          _______,   _______,            _______, _______, _______, _______  \
 
   ),
@@ -59,6 +61,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef COMBO_ENABLE
+//,--------+--------+--------+--------+--------+--------+--------.        ,--------+--------+--------+--------+--------+--------+--------.
+//|                ESC                                                                              ESC              BSLS
+//|--------+--------+--------+--------+--------+--------+--------|        |--------+--------+--------+--------+--------+--------+--------|
+//|       DEL      BSPC     TAB                                                            LT       COLN     GT
+//|--------+--------+--------+--------+--------+--------+--------|        |--------+-ENTER--+--------+--------+--------+--------+--------|
+//|                MINS     ENTER                                                         QUOT      UNDS
+//|--------+--------+--------+--------+--------+--------+--------|        |--------+--------+--------+--------+--------+--------+--------|
+//|
+//`--------+--------+--------+--------+--------+--------+--------/        \--------+--------+--------+--------+--------+--------+--------'
 const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_del[]  = {KC_A, KC_S, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
