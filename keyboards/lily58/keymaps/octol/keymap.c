@@ -17,6 +17,9 @@ enum layer_number {
   _ADJUST,
 };
 
+#define PREV_TAB LCTL(KC_PGUP)
+#define NEXT_TAB LCTL(KC_PGDN)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -25,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |CTRL/Esc| A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
+ * |CTL/Esc| A   |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |CTL/' |
  * |------+------+------+------+------+------| LShift|    | RShift|------+------+------+------+------+------|
  * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -37,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_QWERTY] = LAYOUT( \
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, \
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-  LCTL_T(KC_ESC),KC_A, KC_S, KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  LCTL_T(KC_ESC),KC_A, KC_S, KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RCTL_T(KC_QUOT), \
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  KC_LSFT, KC_RSFT,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
                         KC_LGUI, KC_LALT, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_RALT, KC_RCTRL \
 ),
@@ -47,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   ~  |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  | Del  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   {  |   }  |   (  |   )  |   |  |-------.    ,-------|   +  |   -  |   _  |   =  |   :  |  "   |
+ * |      |   {  |   }  |   (  |   )  |   |  |-------.    ,-------|   +  |   -  |   _  |   =  |      |PR_TAB|
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |   [  |   ]  |   \  |-------|    |-------|   :  |   '  |   "  |      |      |      |
+ * |      |      |      |   [  |   ]  |   \  |-------|    |-------|   :  |   '  |   "  |      |      |NE_TAB|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |      |LOWER | /       /       \      \  |      |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -58,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL, \
-  _______, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE,                   KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  KC_COLN, KC_DQUO, \
-  _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, _______, KC_COLN, KC_QUOT, KC_DQUO, _______, _______, _______, \
+  _______, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE,                   KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  _______, PREV_TAB, \
+  _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, _______, KC_COLN, KC_QUOT, KC_DQUO, _______, _______, NEXT_TAB, \
                              _______, _______, _______, _______, _______, _______, _______, _______\
 ),
 /* RAISE
@@ -68,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | Ins  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      | MBtn1| MUp  | MBtn2|      |-------.    ,-------| Left | Down |  Up  |Right |      |      |
+ * |      |      | MBtn1| MUp  | MBtn2|PR_TAB|-------.    ,-------| Left | Down |  Up  |Right |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      | MLeft|MDown |MRight|      |-------|    |-------| Home | PgUp | PgDn | End  |      |      |
+ * |      |      | MLeft|MDown |MRight|NE_TAB|-------|    |-------| Home | PgUp | PgDn | End  |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |      |      | /       /       \      \  |RAISE |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -80,8 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______, \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
-  _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______,                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-  _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,  _______, _______,  KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______,  _______, \
+  _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, PREV_TAB,                    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+  _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, NEXT_TAB, _______, _______,  KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
                              _______, _______, _______,  _______, _______,  _______, _______, _______ \
 ),
 /* ADJUST
@@ -107,17 +110,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-const uint16_t PROGMEM jk_bspc_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM ui_bspc_combo[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM cv_shift_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM mcomma_shift_combo[] = {KC_M, KC_COMM, COMBO_END};
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(jk_bspc_combo, KC_BSPC),
-    COMBO(ui_bspc_combo, KC_BSPC),
-    COMBO(cv_shift_combo, KC_LSFT),
-    COMBO(mcomma_shift_combo, KC_RSFT)
-};
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_del[]  = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_tab[]  = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_mins[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_ent[]  = {KC_C, KC_V, COMBO_END};
 
+const uint16_t PROGMEM combo_esc2[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM combo_bsls[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_lt[]   = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_coln[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_gt[]   = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_ent2[] = {KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_unds[] = {KC_M, KC_COMM, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(combo_esc, KC_ESC),
+  COMBO(combo_del, KC_DEL),
+  COMBO(combo_bspc, KC_BSPC),
+  COMBO(combo_tab, KC_TAB),
+  COMBO(combo_mins, KC_MINS),
+  COMBO(combo_ent, KC_ENT),
+
+  COMBO(combo_esc2, KC_ESC),
+  COMBO(combo_bsls, KC_BSLS),
+  COMBO(combo_lt, KC_LT),
+  COMBO(combo_coln, KC_COLN),
+  COMBO(combo_gt, KC_GT),
+  COMBO(combo_ent2, KC_ENT),
+  COMBO(combo_quot, KC_QUOT),
+  COMBO(combo_unds, KC_UNDS),
+};
+#endif
 // Setting ADJUST layer RGB back to default
 //void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 //  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {

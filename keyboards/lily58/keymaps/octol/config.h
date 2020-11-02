@@ -51,5 +51,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SLEEP
 */
 
-#define COMBO_COUNT 4
-#define COMBO_TERM 50
+#ifdef COMBO_ENABLE
+#    define COMBO_COUNT 14
+#    define COMBO_TERM 30
+#endif
+
+#ifdef TAPPING_TERM
+#    undef TAPPING_TERM
+#endif
+#define TAPPING_TERM 200
+#define TAPPING_FORCE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
+//#define PERMISSIVE_HOLD
+
+// --- Lifted from pierre83's config ---
+
+// Set the mouse settings to a comfortable speed/accuracy trade-off
+// Assume the screen refresh rate is 60 Htz or higher
+// The default is 50. This makes the mouse ~3 times faster and more accurate
+#define MOUSEKEY_INTERVAL 16
+// The default is 20. Since we made the mouse about 3 times faster with the previous setting,
+// give it more time to accelerate to max speed to retain precise control over short distances.
+#define MOUSEKEY_TIME_TO_MAX 40
+// The default is 300. Let's try and make this as low as possible while keeping the cursor responsive
+#define MOUSEKEY_DELAY 100
+// It makes sense to use the same delay for the mouseweel
+#define MOUSEKEY_WHEEL_DELAY 100
+// The default is 100
+#define MOUSEKEY_WHEEL_INTERVAL 50
+// The default is 40
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 100
