@@ -20,21 +20,11 @@ enum layers {
     _BASE,
     _SYMB,
     _NUMB,
+    _ADJUST,
 };
 
-/* Combomap
- *
- * ,------------------------------.      ,------------------------------.
- * |      |    ESC    |     |     |      |     |     ESC    |   BSLS    |
- * |------+-----+-----+-----+-----|      |-----+------+-----------------|
- * |     DEL   BSPC  TAB    |     |      |    LT     COLN  GT    |      |
- * |------+-----+-----+-----+-----+      |----ENT-----+-----------------|
- * |      |    MINS  ENT    |     |      |    QUOT   UNDS   |    |      |
- * `------+-----+-----+-----+-----'      `------------------------------'
- *               .----------------.      .----------------.
- *               |     |          |      |          |     |
- *               '----------------'      '----------------'
- */
+#define PREV_TAB LCTL(KC_PGUP)
+#define NEXT_TAB LCTL(KC_PGDN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -53,51 +43,84 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_BASE] = LAYOUT(
-  KC_Q,          KC_W,  KC_E,    KC_R,    KC_T,           KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,
-  LCTL_T(KC_A),  KC_S,  KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,           LCTL_T(KC_SCLN),
-  LSFT_T(KC_Z),  KC_X,  KC_C,    KC_V,    KC_B,           KC_N,    KC_M,    KC_COMM, RALT_T(KC_DOT), RSFT_T(KC_SLSH),
-                    KC_LGUI, LT(_SYMB, KC_SPC),           LT(_NUMB, KC_ENT), KC_LALT
+  KC_Q,          KC_W,  KC_E,    KC_R,    KC_T,   KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,
+  LCTL_T(KC_A),  KC_S,  KC_D,    KC_F,    KC_G,   KC_H,    KC_J,    KC_K,    KC_L,           LCTL_T(KC_SCLN),
+  LSFT_T(KC_Z),  KC_X,  KC_C,    KC_V,    KC_B,   KC_N,    KC_M,    KC_COMM, RALT_T(KC_DOT), RSFT_T(KC_SLSH),
+                    KC_LGUI, LT(_SYMB, KC_SPC),   LT(_NUMB, KC_ENT), KC_LALT
 ),
 
 /* Keymap 1: Symbols layer
- * ,------------------------------.      ,--------------------------------.
- * |  !   |  @  |  {  |  }  |  |  |      |  `  |  ~  |     |     |    \   |
- * |-----+-----+-----+-----+------|      |--------------------------------|
- * |  #   |  $  |  (  |  )  | LMB |      |  +  |  -  |  /  |  *  |    '   |
- * |-----+-----+-----+-----+------+      |--------------------------------|
- * |  %   |  ^  |  [  |  ]  | RMB |      |  &  |  =  |  ,  |  .  |   -    |
- * `------+-----+-----+------+----'      `--------------------------------'
- *                .---------------.      .---------------.
- *                |  ;   |        |      |    =    |  ;  |
- *                '---------------'      '---------------'
+ * ,-----------------------------.      ,-----------------------------.
+ * |  !  |  @  |  #  |  $  |  %  |      |  ^  |  &  |  *  |  (  |  )  |
+ * |-----+-----+-----+-----+-----|      |-----------------------------|
+ * |  {  |  }  |  (  |  )  |  |  |      |  +  |  -  |  _  |  =  |     |
+ * |-----+-----+-----+-----+-----+      |-----------------------------|
+ * |     |     |  [  |  ]  |  \  |      |  :  |  '  |  "  |     |     |
+ * `-----+-----+-----+-----+-----'      `-----------------------------'
+ *                   .-----------.      .-----------.
+ *                   |     |     |      |     |     |
+ *                   '-----------'      '-----------'
  */
 [_SYMB] = LAYOUT(
-  KC_EXLM, KC_AT,    KC_LCBR, KC_RCBR, KC_PIPE,          KC_GRV,  KC_TILD, _______, _______, KC_BSLS,
-  KC_HASH, KC_DLR,   KC_LPRN, KC_RPRN, KC_BTN2,          KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_QUOT,
-  KC_PERC, KC_CIRC,  KC_LBRC, KC_RBRC, KC_BTN1,          KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_MINS,
-                              KC_SCLN, _______,          KC_EQL,  KC_SCLN
+  KC_EXLM, KC_AT,    KC_HASH, KC_DLR,  KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+  KC_LCBR, KC_RCBR,  KC_LPRN, KC_RPRN, KC_PIPE,    KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  _______,
+  _______, _______,  KC_LBRC, KC_RBRC, KC_BSLS,    KC_COLN, KC_QUOT, KC_DQUO, _______, _______,
+                              _______, _______,    _______, _______
 ),
 
 /* Keymap 2: Pad/Function layer
- * ,------------------------------.      ,-------------------------------.
- * |  1   |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |   0   |
- * |-----+-----+-----+-----+------|      |-------------------------------|
- * |  F1  | F2  | F3  | F4  |  F5 |      | LFT | DWN | UP  | RGT | VOLUP |
- * |-----+-----+-----+-----+------+      |-------------------------------|
- * |  F6  | F7  | F8  | F9  | F10 |      |MLFT | MDWN| MUP | MRGT| VOLDN |
- * `------+-----+-----+------+----'      `-------------------------------'
- *                    .-----------.      .-------------.
- *                    | F11 | F12 |      |     | RESET |
- *                    '-----------'      '-------------'
+ * ,-----------------------------.      ,-----------------------------.
+ * |  1  |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |  0  |
+ * |-----+-----+-----+-----+-----|      |-----------------------------|
+ * |     |MBtn1| MUp |MBtn2|PR_TB|      | Lft | Dwn | Up  | Rgt |     |
+ * |-----+-----+-----+-----+-----+      |-----------------------------|
+ * |     |MLeft|MDown|MRigt|NE_TB|      | Home| PgUp| PgDn| End |     |
+ * `-----+-----+-----+-----+-----'      `-----------------------------'
+ *                   .-----------.      .-----------.
+ *                   |     |     |      |     |     |
+ *                   '-----------'      '-----------'
  */
 [_NUMB] = LAYOUT(
-  KC_1,   KC_2,  KC_3,  KC_4,  KC_5,          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-  KC_F1,  KC_F2, KC_F3, KC_F4, KC_F5,         KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_VOLU,
-  KC_F6,  KC_F7, KC_F8, KC_F9, KC_F10,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD,
-                        KC_F11, KC_F12,       _______, RESET
+  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+  _______, KC_BTN1, KC_MS_U, KC_BTN2, PREV_TAB,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+  _______, KC_MS_L, KC_MS_D, KC_MS_R, NEXT_TAB,   KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______,
+                             _______, _______,    _______, _______
+),
+
+/* Keymap 3: Adjust layer
+ * ,-----------------------------.      ,-----------------------------.
+ * |  F1 |  F2 |  F3 |  F4 |  F5 |      |  F6 |  F7 |  F8 |  F9 | F10 |
+ * |-----+-----+-----+-----+-----|      |-----------------------------|
+ * |     |     |     |     |     |      |     |     |     | F11 | F12 |
+ * |-----+-----+-----+-----+-----+      |-----------------------------|
+ * |     |     |     |     |     |      |     |     |     |     |     |
+ * `-----+-----+-----+-----+-----'      `-----------------------------'
+ *                   .-----------.      .-----------.
+ *                   |     |     |      |     |RESET|
+ *                   '-----------'      '-----------'
+ */
+[_ADJUST] = LAYOUT(
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+  _______, _______, _______, _______, _______,   _______, _______, _______, KC_F11,  KC_F12,
+  _______, _______, _______, _______, _______,   _______, _______, _______, _______, _______,
+                             _______, _______,   _______, RESET
 ),
 
 };
+
+/* Combomap
+ *
+ * ,------------------------------.      ,------------------------------.
+ * |      |    ESC    |     |     |      |     |     ESC    |   BSLS    |
+ * |------+-----+-----+-----+-----|      |-----+------+-----------------|
+ * |     DEL   BSPC  TAB  PREV_TAB|      |    LT     COLN  GT    |      |
+ * |------+-----+-----+-----+-----+      |----ENT-----+-----------------|
+ * |      |    MINS  ENT  NEXT_TAB|      |    QUOT   UNDS   |    |      |
+ * `------+-----+-----+-----+-----'      `------------------------------'
+ *                     .----------.      .-----------.
+ *                     |     |    |      |     |     |
+ *                     '----------'      '-----------'
+ */
 
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
@@ -106,6 +129,9 @@ const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[]  = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_mins[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_ent[]  = {KC_C, KC_V, COMBO_END};
+
+const uint16_t PROGMEM combo_prev_tab[]  = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM combo_next_tab[]  = {KC_V, KC_B, COMBO_END};
 
 const uint16_t PROGMEM combo_esc2[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM combo_bsls[] = {KC_O, KC_P, COMBO_END};
@@ -123,6 +149,9 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_mins, KC_MINS),
   COMBO(combo_ent, KC_ENT),
+
+  COMBO(combo_prev_tab, PREV_TAB),
+  COMBO(combo_next_tab, NEXT_TAB),
 
   COMBO(combo_esc2, KC_ESC),
   COMBO(combo_bsls, KC_BSLS),
@@ -144,3 +173,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    return update_tri_layer_state(state, _SYMB, _NUMB, _ADJUST);
+}
