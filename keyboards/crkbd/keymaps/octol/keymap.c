@@ -54,6 +54,10 @@ enum macro_keycodes {
 #define RCTL_QUOT RCTL_T(KC_QUOT)
 #define RALT_DOT  RALT_T(KC_DOT)
 
+#define SV_AA RALT(KC_W)
+#define SV_AE RALT(KC_Q)
+#define SV_OE RALT(KC_P)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -70,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,\
+      KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, _______, _______,  KC_DEL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_ESC,  KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PIPE,                      KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,  _______,PREV_TAB,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -86,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,PREV_TAB,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______,NEXT_TAB,                      KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______, _______,\
+      _______, _______,   SV_AA,   SV_AE,   SV_OE,NEXT_TAB,                      KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______, _______,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______ \
                                       //`--------------------------'  `--------------------------'
@@ -111,23 +115,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------------------------------.      ,------------------------------.
  * |      |    ESC    |     |     |      |     |     ESC    |   BSLS    |
  * |------+-----+-----+-----+-----|      |-----+------+-----------------|
- * |     DEL   BSPC  TAB  PREV_TAB|      |    LT     COLN  GT    |      |
+ * |     DEL   BSPC  TAB    |     |      |    LT     COLN  GT    |      |
  * |------+-----+-----+-----+-----+      |----ENT-----+-----------------|
- * |      |    MINS  ENT  NEXT_TAB|      |    QUOT   UNDS   |    |      |
+ * |      |    MINS  ENT    |     |      |    QUOT   UNDS   |    |      |
  * `------+-----+-----+-----+-----'      `------------------------------'
  *                     .----------.      .-----------.
  *                     |     |    |      |     |     |
  *                     '----------'      '-----------'
  */
-const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM combo_del[]  = {KC_A, KC_S, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[]  = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_mins[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_ent[]  = {KC_C, KC_V, COMBO_END};
 
-const uint16_t PROGMEM combo_prev_tab[]  = {KC_F, KC_G, COMBO_END};
-const uint16_t PROGMEM combo_next_tab[]  = {KC_V, KC_B, COMBO_END};
+/*const uint16_t PROGMEM combo_prev_tab[]  = {KC_F, KC_G, COMBO_END};*/
+/*const uint16_t PROGMEM combo_next_tab[]  = {KC_V, KC_B, COMBO_END};*/
 
 const uint16_t PROGMEM combo_esc2[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM combo_bsls[] = {KC_O, KC_P, COMBO_END};
@@ -146,8 +150,8 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_mins, KC_MINS),
   COMBO(combo_ent, KC_ENT),
 
-  COMBO(combo_prev_tab, PREV_TAB),
-  COMBO(combo_next_tab, NEXT_TAB),
+  /*COMBO(combo_prev_tab, PREV_TAB),*/
+  /*COMBO(combo_next_tab, NEXT_TAB),*/
 
   COMBO(combo_esc2, KC_ESC),
   COMBO(combo_bsls, KC_BSLS),
