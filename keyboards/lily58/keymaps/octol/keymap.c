@@ -20,6 +20,10 @@ enum layer_number {
 #define PREV_TAB LCTL(KC_PGUP)
 #define NEXT_TAB LCTL(KC_PGDN)
 
+#define SV_AA RALT(KC_W)
+#define SV_AE RALT(KC_Q)
+#define SV_OE RALT(KC_P)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -71,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | Ins  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      | MBtn1| MUp  | MBtn2|PR_TAB|-------.    ,-------| Left | Down |  Up  |Right |      |      |
+ * |      | LGui | LAlt | LCtl | LSft |PR_TAB|-------.    ,-------| Left | Down |  Up  |Right |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      | MLeft|MDown |MRight|NE_TAB|-------|    |-------| Home | PgUp | PgDn | End  |      |      |
+ * |      |      |  å   |  ä   |  ö   |NE_TAB|-------|    |-------| Home | PgUp | PgDn | End  |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |      |      |      | /       /       \      \  |RAISE |      |      |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -83,8 +87,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT( \
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______, \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_INS, \
-  _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, PREV_TAB,                    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-  _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, NEXT_TAB, _______, _______,  KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
+  _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, PREV_TAB,                    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
+  _______, _______, SV_AA,   SV_AE,   SV_OE,   NEXT_TAB, _______, _______,  KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______, _______, \
                              _______, _______, _______,  _______, _______,  _______, _______, _______ \
 ),
 /* ADJUST
@@ -111,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef COMBO_ENABLE
-const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_esc[]  = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM combo_del[]  = {KC_A, KC_S, COMBO_END};
 const uint16_t PROGMEM combo_bspc[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[]  = {KC_D, KC_F, COMBO_END};
@@ -145,6 +149,7 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_unds, KC_UNDS),
 };
 #endif
+
 // Setting ADJUST layer RGB back to default
 //void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 //  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
