@@ -18,7 +18,7 @@
 #pragma once
 
 #ifdef COMBO_ENABLE
-#    define COMBO_COUNT 16
+#    define COMBO_COUNT 17
 #    define COMBO_TERM 30
 #endif
 
