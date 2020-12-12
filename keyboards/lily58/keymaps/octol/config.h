@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #ifdef COMBO_ENABLE
-#    define COMBO_COUNT 13
+#    define COMBO_COUNT 15
 #    define COMBO_TERM 30
 #endif
 
